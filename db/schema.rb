@@ -15,14 +15,16 @@ ActiveRecord::Schema.define(version: 20170828194724) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "slug",       limit: 255
+    t.integer  "max_speed",  limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name",         limit: 255
+    t.integer  "surface_type", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
 end
