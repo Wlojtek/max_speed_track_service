@@ -6,7 +6,7 @@ describe Api::V1::CarPresenter do
 
   subject { Api::V1::CarPresenter.new(car: car, max_speed_on_track: max_speed_on_track).presentable }
 
-  it '#presentable' do 
+  it '#presentable' do
     expect(subject).to include(
       id: car.id,
       car_slug: car.slug,

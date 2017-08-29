@@ -21,5 +21,25 @@ describe Api::V1::CarsController do
       let(:car) { build(:car) }
       it { expect { subject }.to raise_error(ActiveRecord::RecordNotFound) }
     end
+
+    context 'when no track selected' do
+      subject { get :show, car_slug: car.slug }
+
+      it 'returns correct message' do
+        subject
+        expect(response.body).to eq('No track selected')
+      end
+    end
+
+    context 'when track not exists' do
+      let(:fake_track) { 'fake_track' }
+
+      subject { get :show, car_slug: car.slug, track: fake_track }
+
+      it 'returns correct message' do
+        subject
+        expect(response.body).to eq('Track not found')
+      end
+    end
   end
 end
