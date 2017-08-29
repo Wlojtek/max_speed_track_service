@@ -2,9 +2,9 @@ class Track < ActiveRecord::Base
   enum surface_type: %i[snow gravel asphalt]
 
   SURFACE_TO_VALUE = {
-    snow: 35,
-    gravel: 12,
-    asphalt: 5
+    snow: 0.35,
+    gravel: 0.12,
+    asphalt: 0.05
   }
 
   def percent_value

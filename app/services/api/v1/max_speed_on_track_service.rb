@@ -5,6 +5,6 @@ class Api::V1::MaxSpeedOnTrackService
   end
 
   def get
-    @max_speed_strategy.calculate(@entry)
+    @max_speed_strategy.calculate(entry: @entry)
   end
 end

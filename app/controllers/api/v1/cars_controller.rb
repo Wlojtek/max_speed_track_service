@@ -3,11 +3,13 @@ class Api::V1::CarsController < ApiController
 
   def show
     max_speed_on_track = max_speed_service.get
-    render json: { car: CarPresenter.new(car: @car, max_speed_on_track: max_speed_on_track).presentable }
+    render json: { car: Api::V1::CarPresenter.new(car: @car, max_speed_on_track: max_speed_on_track).presentable }
   end
 
+  private
+
   def find_car
-    @car = Car.find_by(slug: params[:car_slug])
+    @car = Car.find_by!(slug: params[:car_slug])
   end
 
   def find_track
@@ -19,7 +21,6 @@ class Api::V1::CarsController < ApiController
   end
 
   def max_speed_service
-    Api::V1::MaxSpeedOnTrackService.new(entry: entry, max_speed_strategy: SimpleMaxSpeedStrategy.new)
+    Api::V1::MaxSpeedOnTrackService.new(entry: entry, max_speed_strategy: Api::V1::SimpleMaxSpeedStrategy.new)
   end
-
 end
