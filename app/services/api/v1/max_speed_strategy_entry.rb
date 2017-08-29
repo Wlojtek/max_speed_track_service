@@ -1,4 +1,4 @@
-class MaxSpeedStrategyEntry
+class Api::V1::MaxSpeedStrategyEntry
   def initialize(car:, track:)
     @car = car
     @track = track
